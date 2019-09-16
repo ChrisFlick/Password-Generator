@@ -129,6 +129,73 @@ console.log(pass.makePass())
 
 /* End of debugging code */
 
-function click() {
-    
-}
+$(document).ready( () => {
+    // Display a default password to page
+    let pass = new Password(8, true, true, true, true);
+    $("#pass").html(pass.makePass());
+
+    // Initialize variables
+    let length = 8;
+    let upper = false;
+    let lower = false;
+    let special = false;
+    let numeric = false
+
+    $('#upper').click(function(){
+        if($(this).prop("checked") == true){
+            upper = true;;
+        }
+        else if($(this).prop("checked") == false){
+            upper = false;
+        }
+    });
+
+    $('#lower').click(function(){
+        if($(this).prop("checked") == true){
+            lower = true;;
+        }
+        else if($(this).prop("checked") == false){
+            lower = false;
+        }
+    });
+
+    $('#special').click(function(){
+        if($(this).prop("checked") == true){
+            special = true;;
+        }
+        else if($(this).prop("checked") == false){
+            special = false;
+        }
+    });
+
+    $('#numeric').click(function(){
+        if($(this).prop("checked") == true){
+            numeric = true;;
+        }
+        else if($(this).prop("checked") == false){
+            numeric = false;
+        }
+    });
+
+    $('#submit').on('click', () => {
+        if (upper + lower + special + numeric > 0) {
+            let lengthInput = parseInt($('#length').val());
+
+            if (! isNaN(lengthInput)) {
+                length = lengthInput;
+            }
+        
+
+            let pass = new Password(length, special, numeric, lower, upper);
+
+            $("#pass").html(pass.makePass());
+        } else {
+            alert("Please ensure you have at least one checkbox checked")
+        }
+    });
+
+    $('#copy').on('click', () => {
+
+        document.execCommand("copy");
+    })
+})
