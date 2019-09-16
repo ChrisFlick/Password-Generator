@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <title>Random Password Generator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Random Passoword Generator</h1>
+    </header>
+
+    <div class="row">
+        <div class="col-md-2">
+            <form>
+                Length<br>
+                <input type="text" id="length"><br>
+                <br>
+                <input type="checkbox" id="upper">Upper Case<br>
+                <input type="checkbox" id="lower">Lower Case<br>
+                <input type="checkbox" id="numerical">Numbers<br>
+                <input type="checkbox" id="special">Special Characters<br>
+                <input type="submit" id="submit" onclick="click();">
+            </form>
+        </div>
+
+        <div class="col-md-2" id="password"></div>
+
+    </div>
+
+
+    <footer>
+    </footer>
+</body>

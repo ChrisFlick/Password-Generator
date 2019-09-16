@@ -1,7 +1,4 @@
 
-/* Debugging Code */
-/* End of debugging code */
-
 
 class Password {
     constructor(length, special, numeric, lowercase, uppercase) {
@@ -10,6 +7,7 @@ class Password {
         this._numeric = numeric;
         this._lowerCase = lowercase;
         this._upperCase = uppercase;
+
     }
 
     /*********************
@@ -28,12 +26,12 @@ class Password {
         return this._numeric;
     }
 
-    get lowercase() {
-        return this._lowercase;
+    get lowerCase() {
+        return this._lowerCase;
     }
 
-    get uppercase() {
-        return this._uppercase;
+    get upperCase() {
+        return this._upperCase;
     }
 
     /*********************
@@ -66,7 +64,7 @@ class Password {
         }
     }
 
-    set lowercase(bool) {
+    set lowerCase(bool) {
         if (typeof bool === "boolean") {
             this._lowerCase = bool;
         } else {
@@ -74,7 +72,7 @@ class Password {
         }
     }
 
-    set uppercase(bool) {
+    set upperCase(bool) {
         if (typeof bool === "boolean") {
             this._upperCase = bool;
         } else {
@@ -85,4 +83,52 @@ class Password {
     /*********************
     ******* Methods ******
     *********************/
+
+   makePass() { // Makes a random ID for peerJS
+    let result = '';
+    let characters = []
+
+    const SPECIAL = "'`!@#$%^&*()_+-={[}]:;,.<>/?'"
+    const NUMERIC = "1234567890";
+    const LOWER = "abcdefghijklmnopqrstuvwxyz"
+    const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    if (this.special) {
+        characters.push(SPECIAL);
+    }
+
+    if (this.numeric) {
+        characters.push(NUMERIC);
+    }
+
+    if (this.lowerCase) {
+        characters.push(LOWER);
+    }
+
+    if (this.upperCase) {
+        characters.push(UPPER);
+    }
+
+    
+    let charactersLength = characters.length;
+
+    for (let i = 0; i < this.length; i++) {
+        let type = characters[Math.floor(Math.random() * charactersLength)];
+        result += type.charAt(Math.floor(Math.random() * type.length));
+    }
+
+    return result;
+ }
+}
+
+
+/* Debugging Code *
+
+let pass = new Password(8, true, true, true, true);
+console.log(pass.makePass())
+
+/* End of debugging code */
+
+function click() {
+    
 }
