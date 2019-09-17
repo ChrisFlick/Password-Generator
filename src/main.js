@@ -195,7 +195,9 @@ $(document).ready( () => {
     });
 
     $('#copy').on('click', () => {
+        let password = document.querySelector("#pass")
 
+        password.select();
         document.execCommand("copy");
     })
 })
