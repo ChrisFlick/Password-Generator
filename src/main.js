@@ -5,12 +5,19 @@ const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 class Password { // All data needed from user to creat a randomly generated password
     constructor(length, special, numeric, lowercase, uppercase) {
-        this._length = length;
         this._special = special;
         this._numeric = numeric;
         this._lowerCase = lowercase;
         this._upperCase = uppercase;
 
+        if (length < 8 || length.isNaN) {
+            this._length = 8;
+        } else if (length > 128) {
+            this._length = 128;
+        } else {
+            this._length = length;
+        }
+        
     }
 
     /*********************
