@@ -1,6 +1,9 @@
+const SPECIAL = "'`!@#$%^&*()_+-={[}]:;,.<>/?'"
+const NUMERIC = "1234567890";
+const LOWER = "abcdefghijklmnopqrstuvwxyz"
+const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-
-class Password {
+class Password { // All data needed from user to creat a randomly generated password
     constructor(length, special, numeric, lowercase, uppercase) {
         this._length = length;
         this._special = special;
@@ -86,39 +89,52 @@ class Password {
 
    makePass() { // Makes a random ID for peerJS
     let result = '';
-    let characters = []
-
-    const SPECIAL = "'`!@#$%^&*()_+-={[}]:;,.<>/?'"
-    const NUMERIC = "1234567890";
-    const LOWER = "abcdefghijklmnopqrstuvwxyz"
-    const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    let characters = [];
+    let garanteed = []; 
+    let count = 0;
     
     if (this.special) {
         characters.push(SPECIAL);
+        garanteed.push(getRandom(SPECIAL));
+        count ++;
     }
 
     if (this.numeric) {
         characters.push(NUMERIC);
+        garanteed.push(getRandom(NUMERIC));
+        count++;
     }
 
     if (this.lowerCase) {
         characters.push(LOWER);
+        garanteed.push(getRandom(LOWER));
+        count++
     }
 
     if (this.upperCase) {
         characters.push(UPPER);
+        garanteed.push(getRandom(UPPER));
+        count++;
     }
 
     
     let charactersLength = characters.length;
 
     for (let i = 0; i < this.length; i++) {
-        let type = characters[Math.floor(Math.random() * charactersLength)];
-        result += type.charAt(Math.floor(Math.random() * type.length));
+        if (i < count) {
+            result += garanteed[i];
+        } else {
+            let type = characters[Math.floor(Math.random() * charactersLength)];
+            result += getRandom(type);
+        }
     }
 
     return result;
  }
+}
+
+function getRandom(type) { // Grabs a random character from whatever type is passed to it
+    return type.charAt(Math.floor(Math.random() * type.length));
 }
 
 
@@ -135,13 +151,13 @@ $(document).ready( () => {
     $("#pass").html(pass.makePass());
 
     // Initialize variables
-    let length = 8;
+    let length = 8; // If no input is given default to 8.
     let upper = false;
     let lower = false;
     let special = false;
     let numeric = false
 
-    $('#upper').click(function(){
+    $('#upper').click(function(){ // Check to see if Upper is checked off
         if($(this).prop("checked") == true){
             upper = true;;
         }
@@ -150,7 +166,7 @@ $(document).ready( () => {
         }
     });
 
-    $('#lower').click(function(){
+    $('#lower').click(function(){ // Check to see if Lower is checked off
         if($(this).prop("checked") == true){
             lower = true;;
         }
@@ -159,7 +175,7 @@ $(document).ready( () => {
         }
     });
 
-    $('#special').click(function(){
+    $('#special').click(function(){ // Check to see if Special is checked off
         if($(this).prop("checked") == true){
             special = true;;
         }
@@ -168,7 +184,7 @@ $(document).ready( () => {
         }
     });
 
-    $('#numeric').click(function(){
+    $('#numeric').click(function(){ // Check to see if Numeric is checked off
         if($(this).prop("checked") == true){
             numeric = true;;
         }
@@ -177,8 +193,8 @@ $(document).ready( () => {
         }
     });
 
-    $('#submit').on('click', () => {
-        if (upper + lower + special + numeric > 0) {
+    $('#submit').on('click', () => { // Generate a random password once the submit button is clicked
+        if (upper + lower + special + numeric > 0) { // Ensure that the user has selected at least one of the char types.
             let lengthInput = parseInt($('#length').val());
 
             if (! isNaN(lengthInput)) {
@@ -189,12 +205,12 @@ $(document).ready( () => {
             let pass = new Password(length, special, numeric, lower, upper);
 
             $("#pass").html(pass.makePass());
-        } else {
+        } else { // If the user has not selected any types inform them to select at least one.
             alert("Please ensure you have at least one checkbox checked")
         }
     });
 
-    $('#copy').on('click', () => {
+    $('#copy').on('click', () => { // Copy the randomly generated password to their clipboard
         let password = document.querySelector("#pass")
 
         password.select();
