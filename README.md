@@ -24,7 +24,7 @@ The user will also have the option to click a button to copy the password to the
 
 Your application should also be responsive, ensuring that it adapts to multiple screen sizes.
 
-![password generator demo](./Assets/03-JavaScript-homework-demo.png)
+![password generator demo](./Assets/images/03-JavaScript-homework-demo.png)
 
 ## User Story
 
