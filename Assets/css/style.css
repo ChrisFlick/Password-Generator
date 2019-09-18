@@ -16,4 +16,14 @@ textarea {
 
 .btn {
     border-radius: 25px;
+    background-color:red;
+    color: white;
+}
+
+.btn:disabled {
+    background-color:lightgray;
+}
+
+.btn:disabled:hover {
+    color:white;
 }
