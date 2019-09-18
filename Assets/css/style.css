@@ -14,3 +14,6 @@ textarea {
     border-color: lightgrey;
   }
 
+.btn {
+    border-radius: 25px;
+}
