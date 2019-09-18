@@ -14,32 +14,52 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="../Assets/css/style.css"
 </head>
 <body>
     <header>
-        <h1>Random Password Generator</h1>
+            
     </header>
 
-    <div class="row">
-        <div class="col-md-6">
-            <form>
-                Length<br>
-                <input type="text" id="length"><br>
-                <br>
-                <input type="checkbox" id="upper">Upper Case<br>
-                <input type="checkbox" id="lower">Lower Case<br>
-                <input type="checkbox" id="numeric">Numbers<br>
-                <input type="checkbox" id="special">Special Characters<br>
-            </form>
-                <button id="submit" class="btn btn-primary" value="Generate">Generate</button><br>
-        </div>
+    <div class="wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h1>Random Password Generator</h1>
+            </div>
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form>
+                            Length<br>
+                            <input type="text" id="length"><br>
+                            <br>
+                            <input type="checkbox" id="upper">Upper Case<br>
+                            <input type="checkbox" id="lower">Lower Case<br>
+                            <input type="checkbox" id="numeric">Numbers<br>
+                            <input type="checkbox" id="special">Special Characters<br>
+                        </form>
+                            
+                    </div>
 
-        <div class="col-md-2">
-            <h4>Password: </h4><br>
-            <textarea readonly id="pass"></textarea><br>
-            <button id="copy" class="btn btn-primary" value="Copy">Copy</button>
-        </div>
+                    <div class="col-md-4">
+                        
+                            <h4>Password:</h4> 
+                        <br>
+                        <div class="card-body">
+                            <textarea readonly id="pass"></textarea><br>
+                        </div>
+                        
+                    </div>
+            </div>
+            <div class="card-footer">
+                    <button id="submit" class="btn btn-danger" value="Generate">Generate Password</button>
+                    <button id="copy" class="btn btn-secondary float-right" 
+                    value="Copy">Copy to Clipboard</button>
+            </div>
 
+            </div>
+        </div> 
     </div>
 
 
