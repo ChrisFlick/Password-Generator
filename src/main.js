@@ -136,7 +136,7 @@ class Password { // All data needed from user to creat a randomly generated pass
         }
     }
 
-    document.getElementById("copy").disabled = false;
+    $('#copy').prop('disabled', false)
 
     return result;
  }
