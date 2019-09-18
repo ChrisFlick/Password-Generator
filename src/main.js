@@ -136,6 +136,8 @@ class Password { // All data needed from user to creat a randomly generated pass
         }
     }
 
+    document.getElementById("copy").disabled = false;
+
     return result;
  }
 }
@@ -153,9 +155,6 @@ console.log(pass.makePass())
 /* End of debugging code */
 
 $(document).ready( () => {
-    // Display a default password to page
-    let pass = new Password(8, true, true, true, true);
-    $("#pass").html(pass.makePass());
 
     // Initialize variables
     let length = 8; // If no input is given default to 8.
